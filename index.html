@@ -10,15 +10,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#0A0E17;
-  --panel:#111726;
-  --panel-2:#151C2E;
-  --line:#232B40;
-  --amber:#FFB454;
-  --amber-dim:rgba(255,180,84,.14);
-  --blue:#7FA6E8;
-  --paper:#E9E4D8;
-  --muted:#8A92A6;
+  --ink:#000000;
+  --panel:#0A0A0A;
+  --panel-2:#0E0E0E;
+  --line:#1E1E1E;
+  --amber:#FFFFFF;
+  --amber-dim:rgba(255,255,255,.07);
+  --blue:#9A9A9A;
+  --paper:#F2F2F2;
+  --muted:#8C8C8C;
   --mono:'JetBrains Mono',monospace;
   --sans:'Instrument Sans',sans-serif;
   --disp:'Archivo',sans-serif;
@@ -34,7 +34,7 @@ a:hover{color:var(--amber)}
 .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
 
 /* ---------- Nav ---------- */
-nav{position:sticky;top:0;z-index:50;background:rgba(10,14,23,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav-inner{max-width:1100px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
 .logo{font-family:var(--mono);font-weight:700;color:var(--paper);font-size:15px;letter-spacing:.02em}
 .logo .p{color:var(--amber)}
@@ -51,19 +51,19 @@ header{padding:90px 0 0;position:relative}
 .eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:16px}
 .eyebrow::before,.eyebrow::after{content:"";width:44px;height:1px;background:var(--line)}
 h1{font-family:var(--disp);font-weight:900;font-size:clamp(42px,7.5vw,88px);line-height:1.04;letter-spacing:-.02em;margin:22px 0 18px}
-h1 .accent{color:transparent;-webkit-text-stroke:1.5px var(--amber)}
+h1 .accent{color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.85)}
 .hero-sub{max-width:640px;margin:0 auto;font-size:17px;color:var(--muted)}
 .hero-sub strong{color:var(--paper);font-weight:600}
 .hero-ctas{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap;justify-content:center}
 .btn{font-family:var(--mono);font-size:13.5px;letter-spacing:.04em;padding:13px 22px;border-radius:5px;display:inline-flex;align-items:center;gap:8px;transition:transform .18s,background .2s,color .2s;cursor:pointer;border:none}
 .btn:active{transform:translateY(1px)}
 .btn-solid{background:var(--amber);color:var(--ink)!important;font-weight:700}
-.btn-solid:hover{background:#ffc677}
+.btn-solid:hover{background:#d6d6d6}
 .btn-ghost{border:1px solid var(--line);color:var(--paper)!important;background:transparent}
 .btn-ghost:hover{border-color:var(--amber);color:var(--amber)!important}
 
 /* pipeline canvas */
-.pipeline{margin-top:56px;border:1px solid var(--line);border-radius:10px;background:linear-gradient(180deg,var(--panel) 0%,#0D1220 100%);overflow:hidden;position:relative}
+.pipeline{margin-top:56px;border:1px solid var(--line);border-radius:10px;background:linear-gradient(180deg,var(--panel) 0%,#050505 100%);overflow:hidden;position:relative}
 .pipe-head{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--muted)}
 .pipe-head .dots span{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;background:var(--line)}
 .pipe-head .dots span:first-child{background:#e0605e}.pipe-head .dots span:nth-child(2){background:#e5b566}.pipe-head .dots span:nth-child(3){background:#78b876}
@@ -115,8 +115,21 @@ section{padding:96px 0}
 .xp-card ul{margin:16px 0 0;padding-left:18px;color:var(--muted);font-size:15px}
 .xp-card li{margin-bottom:8px}
 .xp-card li::marker{color:var(--amber)}
+.xp-hl{font-family:var(--mono);font-size:12px;color:var(--amber);letter-spacing:.04em;margin-top:4px}
+.m{color:var(--amber);font-style:normal;font-weight:600}
+.xp-toggle{margin-left:14px;font-family:var(--mono);font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:100px;padding:4px 12px;flex-shrink:0;transition:color .2s,border-color .2s;user-select:none}
+.xp-card:hover .xp-toggle{color:var(--amber);border-color:var(--amber)}
+.xp-body{max-height:0;overflow:hidden;transition:max-height .45s ease}
+.xp-item.open .xp-body{max-height:600px}
+.xp-item.open .xp-toggle::before{content:"− "}
+.xp-item:not(.open) .xp-toggle::before{content:"+ "}
+.xp-card{cursor:pointer}
+.xp-logo{transition:transform .25s}
+.xp-card:hover .xp-logo{transform:scale(1.08)}
+.proj-link{display:inline-block;margin-top:16px;font-family:var(--mono);font-size:12.5px;color:var(--amber);letter-spacing:.04em}
+.proj-link:hover{text-decoration:underline}
 .chiprow{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
-.chip{font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--blue);background:rgba(127,166,232,.1);border:1px solid rgba(127,166,232,.25);padding:4px 10px;border-radius:100px}
+.chip{font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:#C9C9C9;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.16);padding:4px 10px;border-radius:100px}
 @media(max-width:640px){.xp-meta{margin-left:0;text-align:left;width:100%}}
 
 /* projects */
@@ -235,20 +248,23 @@ footer{border-top:1px solid var(--line);padding:26px 0;font-family:var(--mono);f
   <div class="sec-head reveal"><span class="tag">02</span><h2>Experience</h2></div>
   <div class="xp">
 
-    <div class="xp-item reveal">
+    <div class="xp-item reveal open">
       <div class="xp-card">
         <div class="xp-top">
           <div class="xp-logo"><img src="https://www.google.com/s2/favicons?domain=verizon.com&sz=128" alt="Verizon logo" onerror="this.outerHTML='&lt;span class=&quot;mono-fallback&quot;&gt;V&lt;/span&gt;'"></div>
-          <div class="xp-title"><h3>Software Engineer</h3><span class="co">Verizon · Tampa, FL</span></div>
+          <div class="xp-title"><h3>Software Engineer</h3><span class="co">Verizon · Tampa, FL</span><div class="xp-hl">60K+ files / 15 min · LLM-assisted tooling · distributed systems</div></div>
           <div class="xp-meta">Dec 2025 — Present</div>
+          <span class="xp-toggle">details</span>
         </div>
-        <ul>
-          <li>Develop Java backend services for a high-throughput XML-to-CSV pipeline handling 60K+ files every 15 minutes, using memory-efficient data structures and low-level I/O patterns.</li>
-          <li>Engineered large-scale ingestion into distributed systems with Bash automation, cutting manual data preparation by 35%.</li>
+        <div class="xp-body">
+          <ul>
+          <li>Develop Java backend services for a high-throughput XML-to-CSV pipeline handling <em class="m">60K+ files every 15 minutes</em>, using memory-efficient data structures and low-level I/O patterns.</li>
+          <li>Engineered large-scale ingestion into distributed systems with Bash automation, cutting manual data preparation by <em class="m">35%</em>.</li>
           <li>Strengthen reliability through rigorous unit &amp; integration testing and code reviews in an Agile SDLC with cross-functional hardware/software teams.</li>
           <li>Leverage LLM-assisted tooling for log analysis, test-case generation, and debugging to accelerate development across the pipeline codebase.</li>
         </ul>
-        <div class="chiprow"><span class="chip">Java</span><span class="chip">Bash</span><span class="chip">Distributed Systems</span><span class="chip">AI-Assisted Tooling</span></div>
+          <div class="chiprow"><span class="chip">Java</span><span class="chip">Bash</span><span class="chip">Distributed Systems</span><span class="chip">AI-Assisted Tooling</span></div>
+        </div>
       </div>
     </div>
 
@@ -256,15 +272,18 @@ footer{border-top:1px solid var(--line);padding:26px 0;font-family:var(--mono);f
       <div class="xp-card">
         <div class="xp-top">
           <div class="xp-logo"><img src="https://www.google.com/s2/favicons?domain=madisonhighlandprep.org&sz=128" alt="Madison Highland Prep logo" onerror="this.outerHTML='&lt;span class=&quot;mono-fallback&quot;&gt;M&lt;/span&gt;'"></div>
-          <div class="xp-title"><h3>Software Developer</h3><span class="co">Madison Highland Prep · Phoenix, AZ</span></div>
+          <div class="xp-title"><h3>Software Developer</h3><span class="co">Madison Highland Prep · Phoenix, AZ</span><div class="xp-hl">LLM report automation · 10+ REST APIs · real-time analytics</div></div>
           <div class="xp-meta">Jul 2025 — Nov 2025</div>
+          <span class="xp-toggle">details</span>
         </div>
-        <ul>
-          <li>Architected a full-stack app (Spring Boot, React, PostgreSQL) serving real-time analytics across 50 competitions.</li>
-          <li>Designed 10+ RESTful APIs and optimized data pipelines over 10K+ records for performance and maintainability.</li>
-          <li>Integrated LLM-driven workflows via API orchestration — automated report generation and natural-language summaries — cutting manual reporting overhead by 40% for non-technical staff.</li>
+        <div class="xp-body">
+          <ul>
+          <li>Architected a full-stack app (Spring Boot, React, PostgreSQL) serving real-time analytics across <em class="m">50 competitions</em>.</li>
+          <li>Designed <em class="m">10+ RESTful APIs</em> and optimized data pipelines over <em class="m">10K+ records</em> for performance and maintainability.</li>
+          <li>Integrated LLM-driven workflows via API orchestration — automated report generation and natural-language summaries — cutting manual reporting overhead by <em class="m">40%</em> for non-technical staff.</li>
         </ul>
-        <div class="chiprow"><span class="chip">Spring Boot</span><span class="chip">React</span><span class="chip">PostgreSQL</span><span class="chip">AI Workflows</span></div>
+          <div class="chiprow"><span class="chip">Spring Boot</span><span class="chip">React</span><span class="chip">PostgreSQL</span><span class="chip">AI Workflows</span></div>
+        </div>
       </div>
     </div>
 
@@ -272,16 +291,19 @@ footer{border-top:1px solid var(--line);padding:26px 0;font-family:var(--mono);f
       <div class="xp-card">
         <div class="xp-top">
           <div class="xp-logo"><img src="https://www.google.com/s2/favicons?domain=pluscredit.com&sz=128" alt="Plus-Credit logo" onerror="this.outerHTML='&lt;span class=&quot;mono-fallback&quot;&gt;P&lt;/span&gt;'"></div>
-          <div class="xp-title"><h3>Software Engineer Intern</h3><span class="co">Plus-Credit Ltd. · Tempe, AZ</span></div>
+          <div class="xp-title"><h3>Software Engineer Intern</h3><span class="co">Plus-Credit Ltd. · Tempe, AZ</span><div class="xp-hl">AI-assisted QA · +20% test coverage · full-stack fintech</div></div>
           <div class="xp-meta">Oct 2024 — May 2025</div>
+          <span class="xp-toggle">details</span>
         </div>
-        <ul>
+        <div class="xp-body">
+          <ul>
           <li>Built full-stack applications in Java, C#/.NET, and React for account management and credit processing workflows.</li>
-          <li>Applied design patterns and OOP to raise test coverage by 20% and resolve 15+ QA defects.</li>
+          <li>Applied design patterns and OOP to raise test coverage by <em class="m">20%</em> and resolve <em class="m">15+ QA defects</em>.</li>
           <li>Translated low-level system requirements into production-ready features in an Agile environment.</li>
           <li>Used AI-assisted development and code-analysis tools to speed defect triage and expand regression test coverage.</li>
         </ul>
-        <div class="chiprow"><span class="chip">Java</span><span class="chip">C# / .NET</span><span class="chip">React</span><span class="chip">REST APIs</span></div>
+          <div class="chiprow"><span class="chip">Java</span><span class="chip">C# / .NET</span><span class="chip">React</span><span class="chip">REST APIs</span></div>
+        </div>
       </div>
     </div>
 
@@ -289,15 +311,18 @@ footer{border-top:1px solid var(--line);padding:26px 0;font-family:var(--mono);f
       <div class="xp-card">
         <div class="xp-top">
           <div class="xp-logo"><img src="https://www.google.com/s2/favicons?domain=airtel.in&sz=128" alt="Airtel logo" onerror="this.outerHTML='&lt;span class=&quot;mono-fallback&quot;&gt;A&lt;/span&gt;'"></div>
-          <div class="xp-title"><h3>Software Engineer Intern</h3><span class="co">Airtel · Remote</span></div>
+          <div class="xp-title"><h3>Software Engineer Intern</h3><span class="co">Airtel · Remote</span><div class="xp-hl">telecom-scale APIs · AI test generation · −25% bug reports</div></div>
           <div class="xp-meta">Jun 2024 — Aug 2024</div>
+          <span class="xp-toggle">details</span>
         </div>
-        <ul>
+        <div class="xp-body">
+          <ul>
           <li>Developed Spring Boot REST APIs for subscriber management — SIM activation and plan management with direct dependencies on network hardware.</li>
-          <li>Reduced bug reports by 25% through functional &amp; integration testing and technical documentation.</li>
+          <li>Reduced bug reports by <em class="m">25%</em> through functional &amp; integration testing and technical documentation.</li>
           <li>Applied AI-assisted test generation and documentation tooling to improve API test coverage and cross-team onboarding.</li>
         </ul>
-        <div class="chiprow"><span class="chip">Java</span><span class="chip">Spring Boot</span><span class="chip">Telecom Systems</span><span class="chip">Testing</span></div>
+          <div class="chiprow"><span class="chip">Java</span><span class="chip">Spring Boot</span><span class="chip">Telecom Systems</span><span class="chip">Testing</span></div>
+        </div>
       </div>
     </div>
 
@@ -305,15 +330,18 @@ footer{border-top:1px solid var(--line);padding:26px 0;font-family:var(--mono);f
       <div class="xp-card">
         <div class="xp-top">
           <div class="xp-logo"><img src="https://www.google.com/s2/favicons?domain=asu.edu&sz=128" alt="Arizona State University logo" onerror="this.outerHTML='&lt;span class=&quot;mono-fallback&quot;&gt;A&lt;/span&gt;'"></div>
-          <div class="xp-title"><h3>Software Developer</h3><span class="co">Arizona State University · Tempe, AZ</span></div>
+          <div class="xp-title"><h3>Software Developer</h3><span class="co">Arizona State University · Tempe, AZ</span><div class="xp-hl">microservices · CI/CD · AI code review</div></div>
           <div class="xp-meta">Jun 2023 — May 2024</div>
+          <span class="xp-toggle">details</span>
         </div>
-        <ul>
-          <li>Built a Spring Boot + PostgreSQL student portal serving thousands of daily users with low-latency APIs.</li>
-          <li>Implemented Docker-containerized microservices and CI/CD pipelines, reducing deployment time by 25%.</li>
+        <div class="xp-body">
+          <ul>
+          <li>Built a Spring Boot + PostgreSQL student portal serving <em class="m">thousands of daily users</em> with low-latency APIs.</li>
+          <li>Implemented Docker-containerized microservices and CI/CD pipelines, reducing deployment time by <em class="m">25%</em>.</li>
           <li>Incorporated AI-assisted code review and automated test generation into CI workflows to raise code quality across the team.</li>
         </ul>
-        <div class="chiprow"><span class="chip">Spring Boot</span><span class="chip">Docker</span><span class="chip">CI/CD</span><span class="chip">Microservices</span></div>
+          <div class="chiprow"><span class="chip">Spring Boot</span><span class="chip">Docker</span><span class="chip">CI/CD</span><span class="chip">Microservices</span></div>
+        </div>
       </div>
     </div>
 
@@ -328,24 +356,42 @@ footer{border-top:1px solid var(--line);padding:26px 0;font-family:var(--mono);f
       <h3>PipeSense — AI Incident Copilot</h3>
       <p>An AI copilot for data-pipeline operations: ingests raw pipeline logs, detects anomalies, and uses retrieval-augmented generation over historical incidents to explain probable root causes in plain English — turning a 30-minute log dig into a 30-second answer. Built on the same class of high-throughput pipelines I work on at Verizon.</p>
       <div class="chiprow"><span class="chip">AI / LLM</span><span class="chip">RAG</span><span class="chip">Anomaly Detection</span><span class="chip">Observability</span></div>
+      <a class="proj-link" href="https://github.com/mahnalak/pipesense" target="_blank" rel="noopener">View on GitHub →</a>
     </div>
     <div class="proj-card reveal">
       <p class="ptag">Python · GitHub API · LLM Agents</p>
       <h3>ReviewBot — AI Code Review Agent</h3>
       <p>An agentic code reviewer that hooks into pull requests via the GitHub API, walks the diff with an LLM, and leaves structured review comments — flagging bug risks, missing test coverage, and design-pattern violations before a human reviewer ever opens the PR. Configurable severity levels keep the signal high and the noise low.</p>
       <div class="chiprow"><span class="chip">AI / LLM</span><span class="chip">Agents</span><span class="chip">Developer Tools</span><span class="chip">Automation</span></div>
+      <a class="proj-link" href="https://github.com/mahnalak/reviewbot" target="_blank" rel="noopener">View on GitHub →</a>
     </div>
     <div class="proj-card reveal">
       <p class="ptag">C · Java · Kafka Streams · Redis · PostgreSQL</p>
       <h3>Low-Level Transaction Monitoring Engine</h3>
       <p>Real-time transaction monitoring system with event-driven Kafka streaming to flag suspicious activity across simulated financial data at high throughput. PostgreSQL persistence and Redis caching support scalable async processing, with low-level memory and I/O optimization throughout.</p>
       <div class="chiprow"><span class="chip">Event-Driven</span><span class="chip">High Throughput</span><span class="chip">Caching</span></div>
+      <a class="proj-link" href="https://github.com/mahnalak/transaction-monitor" target="_blank" rel="noopener">View on GitHub →</a>
     </div>
     <div class="proj-card reveal">
       <p class="ptag">C++ · Python · FastAPI · pgvector</p>
       <h3>Unix-Based Semantic Code Search Engine</h3>
       <p>Embeddings-based semantic search over 50K+ code snippets — C++ preprocessing modules, a FastAPI backend, and pgvector similarity retrieval on Linux. Bash-automated indexing workflows improve developer search productivity across large repositories.</p>
       <div class="chiprow"><span class="chip">Vector Search</span><span class="chip">Embeddings</span><span class="chip">Linux</span></div>
+      <a class="proj-link" href="https://github.com/mahnalak/semantic-code-search" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="proj-card reveal">
+      <p class="ptag">Python · FastAPI · LLM APIs · PostgreSQL</p>
+      <h3>QueryPilot — Natural-Language SQL Copilot</h3>
+      <p>Ask a question in plain English, get a safe, schema-aware SQL query and its results. QueryPilot introspects the database schema, uses an LLM to generate the query, validates it against guardrails (read-only, row limits, injection checks), and explains the results back in natural language.</p>
+      <div class="chiprow"><span class="chip">AI / LLM</span><span class="chip">Text-to-SQL</span><span class="chip">Guardrails</span><span class="chip">FastAPI</span></div>
+      <a class="proj-link" href="https://github.com/mahnalak/querypilot" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="proj-card reveal">
+      <p class="ptag">Python · Async · LLM APIs</p>
+      <h3>EvalKit — Lightweight LLM Evaluation Harness</h3>
+      <p>A small, fast harness for comparing prompts and models side by side: define tasks in YAML, run them concurrently across multiple LLMs, score outputs with exact-match, rubric, or LLM-as-judge scoring, and get a clean HTML report. Built to answer "which prompt/model actually wins?" with data instead of vibes.</p>
+      <div class="chiprow"><span class="chip">AI / LLM</span><span class="chip">Evals</span><span class="chip">Async Python</span><span class="chip">Benchmarking</span></div>
+      <a class="proj-link" href="https://github.com/mahnalak/evalkit" target="_blank" rel="noopener">View on GitHub →</a>
     </div>
   </div>
 </section>
@@ -369,7 +415,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;font-family:var(--mono);f
 
   <div class="edu reveal" style="margin-top:22px">
     <div class="xp-logo"><img src="https://www.google.com/s2/favicons?domain=asu.edu&sz=128" alt="ASU logo" onerror="this.outerHTML='&lt;span class=&quot;mono-fallback&quot;&gt;A&lt;/span&gt;'"></div>
-    <div class="xp-title"><h3>B.S. Computer Science — GPA 3.8/4.0</h3><span class="co">Arizona State University · Tempe, AZ</span></div>
+    <div class="xp-title"><h3>B.S. Computer Science — GPA 3.8/4.0</h3><span class="co">Arizona State University · Tempe, AZ</span><div class="xp-hl">microservices · CI/CD · AI code review</div></div>
     <div class="xp-meta">Aug 2021 — May 2025</div>
   </div>
 </section>
@@ -407,7 +453,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;font-family:var(--mono);f
   const canvas = document.getElementById('pipeCanvas');
   const ctx = canvas.getContext('2d');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const AMBER='#FFB454', BLUE='#7FA6E8', LINE='#232B40', MUTED='#8A92A6';
+  const AMBER='#FFFFFF', BLUE='#9A9A9A', LINE='#1E1E1E', MUTED='#8C8C8C';
   let W,H,nodes,packets=[];
 
   function resize(){
@@ -426,7 +472,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;font-family:var(--mono);f
   window.addEventListener('resize', resize);
 
   function spawn(){
-    packets.push({x:-10, y:H/2 + (Math.random()*90-45), v:1.6+Math.random()*1.8, r:1.8+Math.random()*2.2, c:Math.random()<0.8?AMBER:BLUE});
+    packets.push({x:-10, y:H/2 + (Math.random()*90-45), v:1.6+Math.random()*1.8, r:1.8+Math.random()*2.2, c:Math.random()<0.7?AMBER:BLUE});
   }
 
   function drawStatic(){
@@ -437,12 +483,12 @@ footer{border-top:1px solid var(--line);padding:26px 0;font-family:var(--mono);f
     // nodes
     nodes.forEach(n=>{
       ctx.strokeStyle=AMBER; ctx.lineWidth=1.5;
-      ctx.fillStyle='#0D1220';
+      ctx.fillStyle='#050505';
       const w=124,h=58;
       ctx.beginPath();
       if (ctx.roundRect) ctx.roundRect(n.x-w/2,H/2-h/2,w,h,6); else ctx.rect(n.x-w/2,H/2-h/2,w,h);
       ctx.fill(); ctx.stroke();
-      ctx.fillStyle='#E9E4D8';
+      ctx.fillStyle='#F2F2F2';
       ctx.font='700 14px JetBrains Mono, monospace'; ctx.textAlign='center';
       ctx.fillText(n.label, n.x, H/2-3);
       ctx.fillStyle=MUTED; ctx.font='400 12px JetBrains Mono, monospace';
@@ -480,12 +526,12 @@ footer{border-top:1px solid var(--line);padding:26px 0;font-family:var(--mono);f
     nodes.forEach((n,i)=>{
       const pulse = 1 + Math.sin(t/500 + i*1.4)*0.02;
       ctx.strokeStyle=AMBER; ctx.lineWidth=1.5;
-      ctx.fillStyle='#0D1220';
+      ctx.fillStyle='#050505';
       const w=124*pulse,h=58*pulse;
       ctx.beginPath();
       if (ctx.roundRect) ctx.roundRect(n.x-w/2,H/2-h/2,w,h,6); else ctx.rect(n.x-w/2,H/2-h/2,w,h);
       ctx.fill(); ctx.stroke();
-      ctx.fillStyle='#E9E4D8';
+      ctx.fillStyle='#F2F2F2';
       ctx.font='700 14px JetBrains Mono, monospace'; ctx.textAlign='center';
       ctx.fillText(n.label, n.x, H/2-3);
       ctx.fillStyle=MUTED; ctx.font='400 12px JetBrains Mono, monospace';
@@ -522,6 +568,14 @@ footer{border-top:1px solid var(--line);padding:26px 0;font-family:var(--mono);f
   },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 })();
+
+/* ---------- Experience accordion ---------- */
+document.querySelectorAll('.xp-card').forEach(card=>{
+  card.addEventListener('click', e=>{
+    if (e.target.closest('a')) return;
+    card.closest('.xp-item').classList.toggle('open');
+  });
+});
 
 /* ---------- Contact form → mailto ---------- */
 document.getElementById('sendBtn').addEventListener('click', ()=>{
